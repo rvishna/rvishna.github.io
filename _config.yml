@@ -1,0 +1,14 @@
+title: Random Access Memory
+email: rvishnampet@gmail.com
+description: >-
+  I'm Ram. This is my personal blog. I write technical articles. 
+  I code in Python, Typescript and C++. My favorite subjects are DevOps, software architecture, and data science.
+baseurl: ""
+url: "https://rvishna.github.io"
+twitter_username: rvishnampet
+github_username:  rvishna
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
