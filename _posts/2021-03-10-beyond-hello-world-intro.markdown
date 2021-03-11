@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Beyond Hello World — 1: A Python-Based Command-Line Greeter"
-date: 2021-03-10 23:09:00 -0600
-categories: python
+tags: python architecture devops
 ---
 This is the first of a series of articles in which I will provide a step-by-step for the elements involved in building and deploying a command-line application in Python. We will keep the scope of the application very small in order to cast sufficient attention to the complexities of building a production-ready application for the average end-user. Specifically, we will build an application that accepts the name of the user as input and greets the user.
 
