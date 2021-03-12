@@ -264,6 +264,8 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-feed
+  jekyll-seo-tag
+  jekyll-sitemap
   minima!
   tzinfo
   tzinfo-data
