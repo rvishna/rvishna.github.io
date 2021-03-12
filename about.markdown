@@ -1,10 +1,10 @@
 ---
 layout: default
-title: About Me
+title: About
 ---
 # About Me
 
-Welcome to my blog! I am a lifelong learner and polyglot problem solver juggling the roles of Computational Scientist, Software Engineer, and Solutions Architect at an Energy MegaCorp. I spend most of my creative energy developing automation and decision support software that enable faster and better decision making through optimization and machine learning.
+Welcome to my blog! I am a lifelong learner, a technological polyglot, and a problem solver. I juggle the roles of Computational Scientist, Software Engineer, and Solutions Architect at an Energy MegaCorp. I spend most of my creative energy developing automation and decision support software that enable faster and better decision making through optimization and machine learning.
 
 I have about 15 years of programming experience with an arsenal of tools, platforms, languages and frameworks that includes[^footnote]:
 

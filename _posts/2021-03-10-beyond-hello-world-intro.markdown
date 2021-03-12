@@ -217,7 +217,22 @@ My story is not unique - I know from anecdotal evidence that most graduate stude
 
 > An exception is a condition that is outside the set of expected operating conditions for a program. 
 
-For instance, if `pygreeter` expects users to provide their name as a command-line argument, it is an exception when zero command-line arguments are provided. Since we did not "handle" this exception, it was "raised" by the Python interpreter and our users got to see an ugly traceback when they accidentally omitted the command-line argument. Once you get into the habit of raising and handling exceptions, it becomes much easier to write functions without worrying about all the inputs a user of the function could possibly conceive of. Raising exceptions is a good way to place bounds on what a function can and cannot handle.
+For instance, if `pygreeter` expects users to provide their name as a command-line argument, it is an exception when zero command-line arguments are provided. Since we did not "catch" this exception, it was "raised" by the Python interpreter and our users got to see an ugly traceback when they accidentally omitted the command-line argument:
+```
+$ python -m pygreeter
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/usr/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "***/pygreeter/pygreeter/__main__.py", line 11, in <module>
+    exit_code = main(sys.argv[1:])
+  File "***/pygreeter/pygreeter/__main__.py", line 6, in main
+    print(f"Hello, {argv[0]}")
+IndexError: list index out of range
+```
+
+Once you get into the habit of raising and catching exceptions, it becomes much easier to write functions without worrying about all the inputs a user of the function could possibly conceive of. Raising exceptions is a good way to place bounds on what a function can and cannot handle.
 
 Let us modify the `__main__.py` file to handle this exception:
 ```python
@@ -285,7 +300,7 @@ if __name__ == "__main__":
         sys.exit(exit_code)
 ```
 
-Deriving our custom exceptions from a common base exception class `PyGreeterError` and catching it this way ensures that all custom exceptions raised by `pygreeter` are handled gracefully. The application also catches any other exceptions that occur and reports a slightly different error message. This is good practice for applications, but if you are developing a Python library, you should not catch the generic `Exception` class. Catching `PyGreeterError` _before_ the generic `Exception` class ensures custom exceptions raised by `pygreeter` are handled first. This is handy if you choose to include additional information in your exception class, such as the filename and line number where the exception occurred, or take additional actions for these exceptions, such as sending an email to someone with the traceback of the exception.
+Deriving our custom exceptions from a common base exception class `PyGreeterError` and catching it this way ensures that all custom exceptions raised by `pygreeter` are handled gracefully. The application also catches any other exceptions that occur and reports a slightly different error message. This is good practice for applications, but if you are developing a Python library, you should not catch the generic `Exception` class. Catching `PyGreeterError` _before_ the generic `Exception` class ensures custom exceptions raised by `pygreeter` are handled first. This is useful if you choose to include additional information in your exception class, such as the filename and line number where the exception occurred, or take additional actions for these exceptions, such as sending an email to someone with the traceback of the exception.
 
 There's still the issue of passing multiple names to the application. There are a couple of ways we could address this issue. One is to simply reject all but the first argument, which is something this code already does. The other is to allow the user to enter more than one name and use the input verbatim. This is also straightforward to implement. But how do we communicate the correct usage of the application in either of these instances to the user? Many unix commands including `sed`, `grep`, etc. print their correct usage when you pass the argument `-h` or `--help` on the command-line. Perhaps we could implement this feature for `pygreeter`? Assuming we can, how do we handle the following invocations of `pygreeter`:
 
