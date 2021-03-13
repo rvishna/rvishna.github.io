@@ -18,6 +18,8 @@ plugins:
 twitter_username: rvishnampet
 github_username: rvishna
 
+google_analytics: G-1MW84DHXQ8
+
 show_excerpts: true
 
 markdown: kramdown
